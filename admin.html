@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+  
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px 10px 0;
+      color: #007bff;
+    }
+
+    /* ===== Back Button ===== */
+    .back-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    /* ===== Admin Container ===== */
+    .admin-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #222;
+      margin-top: 30px;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    input[type="file"] {
+      padding: 6px;
+    }
+
+    button {
+      background:#007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background:#007bff;
+    }
+
+    /* ===== Product Items ===== */
+    .product-item {
+  
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      position: relative;
+      padding-right: 100px;
+    }
+
+    .product-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product-info {
+      flex-grow: 1;
+    }
+
+    .product-item h3 {
+      margin: 0 0 5px;
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .product-item p {
+      margin: 0;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .edit-delete-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .edit-delete-buttons button {
+      font-size: 13px;
+      padding: 6px 10px;
+    }
+
+    .edit-delete-buttons button:last-child {
+      background:#007bff;
+    }
+
+    .edit-delete-buttons button:last-child:hover {
+      background:#007bff;
+    }
+
+    /* ===== Modal ===== */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 300px;
+      width: 90%;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .admin-container { padding: 15px; }
+      .product-item { flex-direction: column; padding-right: 15px; }
+      .edit-delete-buttons {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .product-item img { width: 60px; height: 60px; }
+      .product-item h3 { font-size: 0.95rem; }
+      .product-item p { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Title -->
+  <h1>Admin Panel</h1>
+
+  <!-- Admin Section -->
+  <div class="admin-container">
+
+    <!-- Product List First -->
+    <h2>Product List</h2>
+    <div id="admin-products">
+      <!-- JS will inject product items here -->
+    </div>
+
+    <!-- Add Product Section -->
+    <h2>Add Product</h2>
+    <input id="name" placeholder="Product Name">
+    <input id="price" type="number" placeholder="Price">
+    <input id="image" type="file" accept="image/*">
+    <textarea id="description" placeholder="Product Description"></textarea>
+    <input id="variants" placeholder="Variants (comma separated)">
+    <button id="add-product">Add Product</button>
+  </div>
+
+  <!-- General Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h3 id="modal-message"></h3>
+      <button onclick="closeModal()">OK</button>
+    </div>
+  </div>
+
+  <!-- Password Modal -->
+  <div class="modal" id="password-modal">
+    <div class="modal-content">
+      <h3>Enter Admin Password</h3>
+      <input type="password" id="password-input" placeholder="Password">
+      <button onclick="checkPassword()">Submit</button>
+      <button onclick="closePasswordModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

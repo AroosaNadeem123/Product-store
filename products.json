@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Cotton Casual Shirt",
+    "price": 2200,
+    "image": "images/shirt1.webp",
+    "variants": ["Small", "Medium", "Large"],
+    "description": "Comfortable cotton shirt perfect for everyday wear, available in multiple sizes."
+  },
+  {
+    "id": 2,
+    "name": "Formal Oxford Shirt",
+    "price": 3200,
+    "image": "images/shirt2.webp",
+    "variants": ["Medium", "Large", "XL"],
+    "description": "Classic formal Oxford shirt with a crisp finish and tailored fit."
+  },
+  {
+    "id": 3,
+    "name": "Men's Leather Wallet",
+    "price": 1800,
+    "image": "images/wallet1.jpg",
+    "variants": ["Black", "Brown"],
+    "description": "Premium genuine leather wallet with multiple compartments for cards and cash."
+  },
+  {
+    "id": 4,
+    "name": "Bifold Slim Wallet",
+    "price": 1500,
+    "image": "images/wallet2.webp",
+    "variants": ["Tan", "Dark Brown", "Gray"],
+    "description": "Slim and compact bifold wallet for a minimalist look and feel."
+  },
+  {
+    "id": 5,
+    "name": "Running Shoes",
+    "price": 4500,
+    "image": "images/ssho.jpg",
+    "variants": ["40", "41", "42", "43"],
+    "description": "Lightweight and breathable running shoes designed for performance and comfort."
+  },
+  {
+    "id": 6,
+    "name": "Leather Loafers",
+    "price": 5500,
+    "image": "images/sho.jpg",
+    "variants": ["41", "42", "43", "44"],
+    "description": "Stylish leather loafers perfect for both casual and formal occasions."
+  },
+  {
+    "id": 7,
+    "name": "Basic Pleated Trousers",
+    "price": 2500,
+    "image": "images/trouse22.jpg",
+    "variants": ["Small", "Medium", "Large"],
+    "description": "Trendy denim shirt for a rugged, casual look."
+  },
+  {
+    "id": 8,
+    "name": "Pleated Trousers",
+    "price": 4000,
+    "image": "images/trouser.jpg",
+    "variants": ["40", "41", "42", "43"],
+    "description": "Versatile trouser offering both comfort and street style."
+  }
+]
